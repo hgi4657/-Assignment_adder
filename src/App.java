@@ -7,11 +7,10 @@ public class App {
 
         // 처음 시작할 때는 exit 값이 없어야 반복문이 시작하니까 초기값은 빈값
         String inputExit = "";
+        String inputRemove = "";
 
-        // 길이가 10인 배열 선언 및 생성
-        int[] intArray = new int[10];
-        // 배열의 마지막 index 를 저장하는 변수
-        int count = 0;
+        // 값을 추가하거나 삭제할 때 빠른 LinkedList 사용
+        LinkedList<Integer> intLinkedList = new LinkedList<Integer>();
 
         int result = 0;
         // while 사용한 이유 => 반복이 진행될 정확한 범위가 존재하지 않기 때문
@@ -44,18 +43,16 @@ public class App {
             }
             System.out.println("결과: " + result);
 
-            // index 가 9일 경우, intArray 두번째 값부터 앞으로 당기기
-            if (count == 9) {
-                for (int i = 0; i < count; i++) { // index 8번 까지만
-                    intArray[i] = intArray[i+1];
-                }
-                // 마지막 9번 index 에 값을 계속 넣기 위해서 ++count 삭제 / count 유지
-                intArray[count] = result;
-            } else {
-                // 배열에 저장
-                intArray[count] = result;
-                // 배열 index 증가
-                ++count;
+            // 출력된 결과 추가
+            intLinkedList.add(result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            inputRemove = sc.next();
+
+            // remove 를 입력 받았을 때 수행
+            if (inputRemove.equals("remove")) {
+                intLinkedList.remove(0);
+                // intLinkedList.removeFirst();  // 이것도 같은 메서드인가?
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
