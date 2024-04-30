@@ -7,7 +7,8 @@ public class App {
 
         // 처음 시작할 때는 exit 값이 없어야 반복문이 시작하니까 초기값은 빈값
         String inputExit = "";
-        String inputRemove = "";
+        String inputRemove;
+        String intQuiry;
 
         // 값을 추가하거나 삭제할 때 빠른 LinkedList 사용
         LinkedList<Integer> intLinkedList = new LinkedList<Integer>();
@@ -53,6 +54,17 @@ public class App {
             if (inputRemove.equals("remove")) {
                 intLinkedList.remove(0);
                 // intLinkedList.removeFirst();  // 이것도 같은 메서드인가?
+            }
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            intQuiry = sc.next();
+
+            // inquiry 를 입력 받았을 때 수행
+            if (intQuiry.equals("inquiry")) {
+                for (int i : intLinkedList) {
+                    System.out.print(i + " ");
+                }
+                System.out.println(); // 줄바꿈
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
