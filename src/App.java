@@ -44,15 +44,18 @@ public class App {
             }
             System.out.println("결과: " + result);
 
-            // 배열에 저장
-            intArray[count] = result;
-            // 배열 index 증가
-            ++count;
-
-            // 배열 10칸이 가득 차면 반복문 종료 => 가득 차면서 오류가 뜨길래 코드 추가
-            if (count == 10) {
-                System.out.println("배열의 저장공간이 가득 찼습니다");
-                break;
+            // index 가 9일 경우, intArray 두번째 값부터 앞으로 당기기
+            if (count == 9) {
+                for (int i = 0; i < count; i++) { // index 8번 까지만
+                    intArray[i] = intArray[i+1];
+                }
+                // 마지막 9번 index 에 값을 계속 넣기 위해서 ++count 삭제 / count 유지
+                intArray[count] = result;
+            } else {
+                // 배열에 저장
+                intArray[count] = result;
+                // 배열 index 증가
+                ++count;
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
