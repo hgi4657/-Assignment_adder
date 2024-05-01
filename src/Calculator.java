@@ -23,12 +23,15 @@ public class Calculator {
         areaList.add(area);
         return area;
     }
+    // 원주율 Getter
     public ArrayList<Double> getAreaList() {
         return areaList;
     }
+    // 원주율 Setter
     public void setAreaList(ArrayList<Double> areaList) {
         this.areaList = areaList;
     }
+    // 원주율 조회 메서드
     public void inquiryAreas() {
         for (double i : areaList) {
             System.out.print(i + " ");
@@ -59,15 +62,19 @@ public class Calculator {
         numberList.add(answer);
         return answer;
     }
+    // 사칙연산 Getter
     public ArrayList<Integer> getList() {
         return numberList;
     }
+    // 사칙연산 Setter
     public void setList(ArrayList<Integer> numberList) {
         this.numberList = numberList;
     }
+    // 사칙연산 삭제 메서드
     public void removeResult() {
         numberList.remove(0);
     }
+    // 사칙연산 조회 메서드
     public void inquiryResults() {
         for (int i : numberList) {
             System.out.print(i + " ");

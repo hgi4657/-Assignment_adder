@@ -67,6 +67,7 @@ public class App {
                     inputExit = sc.next();
                 }
             } else {
+                // 숫자가 잘못 입력되었을 때
                 System.out.println("해당 숫자는 계산식이 존재하지 않습니다");
             }
         } catch (Exception e) {
