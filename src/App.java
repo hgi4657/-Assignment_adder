@@ -31,7 +31,7 @@ public class App {
 
                 // remove 를 입력 받았을 때 수행
                 if (inputRemove.equals("remove")) {
-                    calc.delList();
+                    calc.removeResult();
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");

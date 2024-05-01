@@ -40,7 +40,7 @@ public class Calculator {
     public void setList(ArrayList<Integer> numberList) {
         this.numberList = numberList;
     }
-    public void delList() {
+    public void removeResult() {
         numberList.remove(0);
     }
 }
