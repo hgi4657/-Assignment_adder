@@ -3,8 +3,8 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    // 배열 생성
-    LinkedHashSet<Integer> numberList = new LinkedHashSet<Integer>();
+    // 배열 선언
+    LinkedHashSet<Integer> numberList;
     // 정규식 검사용
     private static final String OPERATION_REG = "[+\\-*/]";
 
@@ -27,7 +27,6 @@ public class Calculator {
             case '/': answer = firstNumber / secondNumber;
             break;
         }
-        numberList.add(answer);
         return answer;
     }
 
