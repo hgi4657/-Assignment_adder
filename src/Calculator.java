@@ -3,6 +3,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+    // 생성자 추가 / 컬렉션 초기화
     public Calculator() {
         this.numberList = new ArrayList<>();
     }

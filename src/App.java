@@ -7,7 +7,6 @@ public class App {
         // 인스턴스 생성
         Calculator calc = new Calculator();
 
-
         // 초기값 설정 & 변수 선언
         String inputExit = "";
         String inputRemove;
