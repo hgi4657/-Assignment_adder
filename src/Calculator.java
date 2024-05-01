@@ -43,4 +43,10 @@ public class Calculator {
     public void removeResult() {
         numberList.remove(0);
     }
+    public void inquiryResults() {
+        for (int i : numberList) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); // 줄바꿈
+    }
 }

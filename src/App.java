@@ -39,10 +39,7 @@ public class App {
 
                 // inquiry 를 입력 받았을 때 수행
                 if (intQuiry.equals("inquiry")) {
-                    for (int i : calc.getList()) {
-                        System.out.print(i + " ");
-                    }
-                    System.out.println(); // 줄바꿈
+                    calc.inquiryResults();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
