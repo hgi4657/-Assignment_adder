@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 // 자식 클래스
 // 사칙연산을 수행하는 계산기
@@ -18,7 +17,6 @@ public class ArithmeticCalculator extends Calculator {
     // 예외 처리 추가
     private Operator operatorFactory(char operator) throws ZeroException {
         // 요즘 새로 쓰는 switch 형태, break 자동으로 해줌
-        // return 에 바로 switch 쓸수있구나
         return switch (operator) {
             case '+' -> new AddOperator();
             case '-' -> new SubtractOperator();

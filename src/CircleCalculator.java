@@ -8,11 +8,12 @@ public class CircleCalculator extends Calculator {
         super(numberList);
     }
 
+    // 원주율
+    public static final double PI = 3.14;
+
     // 원의 넓이를 계산하는 메서드
     public double calculate(int radius) {
-        double area = radius * radius * PI;
-        super.getNumberList().add(area);
-        return area;
+        return radius * radius * PI;
     }
 
     // 원주율 조회 메서드 (비슷한 기능, 재정의)

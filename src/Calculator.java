@@ -13,22 +13,25 @@ public abstract class Calculator {
     // 배열 선언
     private final ArrayList<Double> numberList;
 
-    // 원주율 저장 => static final : 공통적인 변하지 않는 불변의 값 (상수)
-    public static final double PI = 3.14;
-
     // Getter
     public ArrayList<Double> getNumberList() {
         return numberList;
     }
 
-    // 사칙연산 삭제 메서드
+    // 삭제 메서드
     public void removeResult() {
         numberList.remove(0);
     }
 
-    // 추상 메서드 : 블록 {} 없음
+    // 저장 메서드
+    public void addResult(double result) {
+        numberList.add(result);
+    }
+
+    // 값을 조회하는 추상 메서드
     abstract void inquiryResult();
     // calculate 는 추상 메서드로 사용하지 않는 이유
     // 매개변수가 달라서 하나 부를 때 두가지 전부를 불러와야 해서
     // 필요없는 메서드도 같이 가져오게 됨 (사용 시 주의)
+
 }

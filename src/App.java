@@ -33,6 +33,8 @@ public class App {
                     // 사칙연산 계산
                     result = arithmeticCalculator.calculate(operator,firstNum,secondNum);
                     System.out.println("결과: " + result);
+                    // 저장 메서드 추가
+                    arithmeticCalculator.addResult(result);
 
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                     inputRemove = sc.next();
@@ -61,7 +63,10 @@ public class App {
                     int circleRadius = sc.nextInt();
 
                     // 계산된 원의 넓이
-                    System.out.println("결과: " + circleCalculator.calculate(circleRadius));
+                    result = circleCalculator.calculate(circleRadius);
+                    System.out.println("결과: " + result);
+                    // 결과값 저장 메서드
+                    circleCalculator.addResult(result);
 
                     // 저장된 원의 넓이 값들 전체 조회
                     circleCalculator.inquiryResult();
