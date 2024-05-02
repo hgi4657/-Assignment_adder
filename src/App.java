@@ -6,8 +6,9 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 인스턴스 생성
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>());
+        // 인스턴스 생성 (계산 부분 new 생성)
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(),
+                new AddOperator(), new SubtractOperator(), new MultiplyOperator(), new DivideOperator());
         CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         // 초기값 설정 & 변수 선언
