@@ -33,5 +33,4 @@ public abstract class Calculator {
     // calculate 는 추상 메서드로 사용하지 않는 이유
     // 매개변수가 달라서 하나 부를 때 두가지 전부를 불러와야 해서
     // 필요없는 메서드도 같이 가져오게 됨 (사용 시 주의)
-
 }

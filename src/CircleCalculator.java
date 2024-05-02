@@ -19,9 +19,7 @@ public class CircleCalculator extends Calculator {
     // 원주율 조회 메서드 (비슷한 기능, 재정의)
     @Override
     void inquiryResult() {
-        for (double i : super.getNumberList()) {
-            System.out.print(i + " ");
-        }
+        getNumberList().forEach(result -> System.out.print(result + " "));
         System.out.println(); // 줄바꿈
     }
 }

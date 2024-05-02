@@ -30,10 +30,6 @@ public class ArithmeticCalculator extends Calculator {
     // 사칙연산 조회 메서드 (비슷한 기능, 재정의)
     @Override
     void inquiryResult() {
-        // 부모의 컬렉션 get
-        for (double i : super.getNumberList()) {
-            System.out.print(i + " ");
-        }
-        System.out.println(); // 줄바꿈
+        getNumberList().forEach(result -> System.out.print(result + " "));
     }
 }
