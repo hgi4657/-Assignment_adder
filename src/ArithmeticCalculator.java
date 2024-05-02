@@ -5,48 +5,28 @@ import java.util.regex.Pattern;
 // 사칙연산을 수행하는 계산기
 public class ArithmeticCalculator extends Calculator {
 
-
-    // final 은 인스턴스가 만들어질 때 생성자가 만들어져야 한다
-    private final AddOperator addOperator;
-    private final SubtractOperator subtractOperator;
-    private final MultiplyOperator multiplyOperator;
-    private final DivideOperator divideOperator;
-
-    public ArithmeticCalculator(ArrayList<Double> numberList, AddOperator addOperator,
-                                SubtractOperator subtractOperator, MultiplyOperator multiplyOperator,
-                                DivideOperator divideOperator) {
+    public ArithmeticCalculator(ArrayList<Double> numberList) {
         super(numberList);
-        this.addOperator = addOperator;
-        this.subtractOperator = subtractOperator;
-        this.multiplyOperator = multiplyOperator;
-        this.divideOperator = divideOperator;
+    }
+    
+    public double calculate(char operation, int num1, int num2) throws ZeroException {
+        return operatorFactory(operation).operate(num1, num2);
     }
 
-    // 정규식 검사용
-    private static final String OPERATION_REG = "[+\\-*/]";
-
-    // 사칙연산 계산하는 메서드
-    public double calculate(char operator, int firstNumber, int secondNumber) throws Exception {
-        // 오류 검사 (사칙연산, 두번째 숫자 0)
-        if (!Pattern.matches(OPERATION_REG, String.valueOf(operator))) {
-            throw new ZeroException("사칙연산 외");
-        }
-        if (secondNumber == 0) {
-            throw new ZeroException("두번째 숫자에 0은");
-        }
-        double answer = 0;
-        switch(operator) {
-            case '+': answer = addOperator.operate(firstNumber,secondNumber);
-                break;
-            case '-': answer = subtractOperator.operate(firstNumber,secondNumber);
-                break;
-            case '*': answer = multiplyOperator.operate(firstNumber,secondNumber);
-                break;
-            case '/': answer = divideOperator.operate(firstNumber,secondNumber);
-                break;
-        }
-        super.getNumberList().add(answer);
-        return answer;
+    // 연산자를 선택해주는 기능 (클래스로 만드는것이 더 좋음)
+    // new 가 계속 생겨나서 메모리 측면에서 좋지 않음
+    // 예외 처리 추가
+    private Operator operatorFactory(char operator) throws ZeroException {
+        // 요즘 새로 쓰는 switch 형태, break 자동으로 해줌
+        // return 에 바로 switch 쓸수있구나
+        return switch (operator) {
+            case '+' -> new AddOperator();
+            case '-' -> new SubtractOperator();
+            case '*' -> new MultiplyOperator();
+            case '/' -> new DivideOperator();
+            case '%' -> new ModOperator();
+            default -> throw new ZeroException("사칙연산 외 다른 것은 ");
+        };
     }
 
     // 사칙연산 조회 메서드 (비슷한 기능, 재정의)
