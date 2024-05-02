@@ -1,84 +1,34 @@
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
-public class Calculator {
+// 추상 클래스
+public abstract class Calculator {
 
     // 생성자 추가 / 컬렉션 초기화
-    public Calculator() {
-        this.areaList = new ArrayList<>();
-        this.numberList = new ArrayList<>();
+    // 여기 () 안에 (ArrayList<Double> numberList 를 넣어야 하는 이유 ?
+    // 여태 안 넣어도 괜찮았는데 추상 클래스 / 메서드 반영 후 안됨 !
+    public Calculator(ArrayList<Double> numberList) {
+        this.numberList = numberList;
     }
 
     // 배열 선언
-    private ArrayList<Integer> numberList;
-    private ArrayList<Double> areaList;
-    // 정규식 검사용
-    private static final String OPERATION_REG = "[+\\-*/]";
+    private final ArrayList<Double> numberList;
+
     // 원주율 저장 => static final : 공통적인 변하지 않는 불변의 값 (상수)
-    private static final double PI = 3.14;
+    public static final double PI = 3.14;
 
-    // 원의 넓이를 계산하는 메서드
-    public double calculateCircleArea(int radius) {
-        double area = radius * radius * PI;
-        areaList.add(area);
-        return area;
-    }
-    // 원주율 Getter
-    public ArrayList<Double> getAreaList() {
-        return areaList;
-    }
-    // 원주율 Setter
-    public void setAreaList(ArrayList<Double> areaList) {
-        this.areaList = areaList;
-    }
-    // 원주율 조회 메서드
-    public void inquiryAreas() {
-        for (double i : areaList) {
-            System.out.print(i + " ");
-        }
-        System.out.println(); // 줄바꿈
-    }
-
-    // 사칙연산 계산하는 메서드
-    public int calculate(char operator, int firstNumber, int secondNumber) throws Exception {
-        // 오류 검사 (사칙연산, 두번째 숫자 0)
-        if (!Pattern.matches(OPERATION_REG, String.valueOf(operator))) {
-            throw new ZeroException("사칙연산 외");
-        }
-        if (secondNumber == 0) {
-            throw new ZeroException("두번째 숫자에 0은");
-        }
-        int answer = 0;
-        switch(operator) {
-            case '+': answer = firstNumber + secondNumber;
-            break;
-            case '-': answer = firstNumber - secondNumber;
-            break;
-            case '*': answer = firstNumber * secondNumber;
-            break;
-            case '/': answer = firstNumber / secondNumber;
-            break;
-        }
-        numberList.add(answer);
-        return answer;
-    }
-    // 사칙연산 Getter
-    public ArrayList<Integer> getList() {
+    // Getter
+    public ArrayList<Double> getNumberList() {
         return numberList;
     }
-    // 사칙연산 Setter
-    public void setList(ArrayList<Integer> numberList) {
-        this.numberList = numberList;
-    }
+
     // 사칙연산 삭제 메서드
     public void removeResult() {
         numberList.remove(0);
     }
-    // 사칙연산 조회 메서드
-    public void inquiryResults() {
-        for (int i : numberList) {
-            System.out.print(i + " ");
-        }
-        System.out.println(); // 줄바꿈
-    }
+
+    // 추상 메서드 : 블록 {} 없음
+    abstract void inquiryResult();
+    // calculate 는 추상 메서드로 사용하지 않는 이유
+    // 매개변수가 달라서 하나 부를 때 두가지 전부를 불러와야 해서
+    // 필요없는 메서드도 같이 가져오게 됨 (사용 시 주의)
 }

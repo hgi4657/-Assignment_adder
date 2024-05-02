@@ -1,17 +1,20 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         // 인스턴스 생성
-        Calculator calc = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>());
+        CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         // 초기값 설정 & 변수 선언
         String inputExit = "";
         String inputRemove;
         String intQuiry;
-        int result;
+        double result;
 
         try {
             System.out.println("사칙연산을 계산하고 싶다면 '1'을 입력하고, 원의 넓이를 구하고 싶다면 '2'를 입력하세요");
@@ -28,7 +31,7 @@ public class App {
                     char operator = sc.next().charAt(0);
 
                     // 사칙연산 계산
-                    result = calc.calculate(operator,firstNum,secondNum);
+                    result = arithmeticCalculator.calculate(operator,firstNum,secondNum);
                     System.out.println("결과: " + result);
 
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
@@ -36,7 +39,7 @@ public class App {
 
                     // remove 를 입력 받았을 때 첫번째 index 값 삭제
                     if (inputRemove.equals("remove")) {
-                        calc.removeResult();
+                        arithmeticCalculator.removeResult();
                     }
 
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
@@ -44,7 +47,7 @@ public class App {
 
                     // inquiry 를 입력 받았을 때 전체 조회
                     if (intQuiry.equals("inquiry")) {
-                        calc.inquiryResults();
+                        arithmeticCalculator.inquiryResult();
                     }
 
                     System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -58,10 +61,10 @@ public class App {
                     int circleRadius = sc.nextInt();
 
                     // 계산된 원의 넓이
-                    System.out.println("결과: " + calc.calculateCircleArea(circleRadius));
+                    System.out.println("결과: " + circleCalculator.calculate(circleRadius));
 
                     // 저장된 원의 넓이 값들 전체 조회
-                    calc.inquiryAreas();
+                    circleCalculator.inquiryResult();
 
                     System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                     inputExit = sc.next();
